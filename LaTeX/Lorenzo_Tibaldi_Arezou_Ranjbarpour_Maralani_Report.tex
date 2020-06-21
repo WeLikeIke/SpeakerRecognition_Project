@@ -51,7 +51,7 @@ In this project we tackled the problem by implementing a small neural network mo
 	\subsection{The code}
 	The python code we wrote for the project can be found at: \url{https://github.com/WeLikeIke/SpeakerRecognition_Project}.\label{url:repo}
 
-	The code was tested completely on Google Collaboratory and was developed using the keras framework for neural networks.
+	The code was tested completely on Google Collaboratory and was developed using the keras library for neural networks.
 
 	\subsection{The dataset}
 	The dataset is called SoundData.zip and can be found in the repository here \ref{url:repo}.
@@ -76,7 +76,7 @@ In this project we tackled the problem by implementing a small neural network mo
 \section{Implementation}
 	\subsection{Choosing the features}
 	There are many ways to implement a Speaker Recognition model depending on your needs, 
-	we decided to use Mel-frequency cepstral coefficents, or MFCC for short, as the only features our model would take as input.
+	we decided to use Mel-frequency cepstral coefficents, or MFCC for short, as the only features our model would take as inputs.
 
 	\subsection{A bit of preprocessing}
 	Since it wasn't possible to record meaninful voicelines while adhering to strict timing rules we decided to record many voicelines of different lengths.
@@ -94,7 +94,7 @@ In this project we tackled the problem by implementing a small neural network mo
 	\subsection{Creating the model}
 	The model is composed of:
 	\begin{itemize}
-	\item A Long-Short Term Memory layer with 256 neurons, LSTM are especially useful because when the dataset is small (like in our case).
+	\item A Long Short-Term Memory layer with 256 neurons, LSTM are especially useful when the dataset is small (like in our case).
 	\item A Flatten layer that needs to be there to go from the output of the LSTM to the input of the Dense layer.
 	\item A Dense layer with 128 neurons and ReLU activation function.
 	\item Lastly a Dense layer with as many neurons as the possible labels (here 3) with a {\bf softmax} activation function.
@@ -108,7 +108,7 @@ In this project we tackled the problem by implementing a small neural network mo
 	Then we turned our attention towards tuning a couple of parameters, we empirically settled on 16 as batch size, 32 as number of epochs, 
 	0.5 as the dropout values for the Dropout layers and finally the number of MFCC for each audio file (so the number of inputs for the model) at 40.
 
-	Lastly we were noticing a bit of overfitting still, and we were able to contrast that by adding a dropout value inside the LSTM, recurrent layers like this are
+	Lastly we were still noticing a bit of overfitting, and we were able to contrast that by adding a dropout value inside the LSTM, recurrent layers like this are
 	fairly susceptible to overfitting so we introduced an internal dropout of 0.33.
 
 	Final model architecture here \ref{fig:model}.
@@ -129,8 +129,8 @@ In this project we tackled the problem by implementing a small neural network mo
 	the vast majority of times the model returned an accurate prediction for over 60\% of the test set.
 
 	\bigskip
-	We are satisfied with this final result, in the future it could surely be possible to improve upon this model, for example by increasing the complexity
-	or introducing different features.
+	We are satisfied with this final result, in the future it could surely be possible to improve upon this model, for example by increasing 
+	the complexity of the model or introducing different features.
 
 	In particular, if we ignore the noise part of the dataset then it could've been theoretically possible to build a recognition neural network that only uses the
 	highest and lowest frequencies in the voicelines, this is because the 2 speakers are one male and one female and as such should have different frequency
@@ -157,4 +157,11 @@ In this project we tackled the problem by implementing a small neural network mo
 	\label{fig:model}
 	\end{figure}
 
+\clearpage
+\section*{References}
+\begin{enumerate}
+\item \url{https://www.researchgate.net/publication/221912826_Speaker_Recognition}
+\item \url{https://www.researchgate.net/publication/3333308_Speaker_Recognition_Using_Neural_Networks_And_Conventional_Classifiers}
+\item \url{https://www.researchgate.net/publication/313587260_Speech_enhancement_using_Long_Short-Term_Memory_based_recurrent_Neural_Networks_for_noise_robust_Speaker_Verification}
+\end{enumerate}
 \end{document}
